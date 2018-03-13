@@ -1,3 +1,3 @@
 # Pixel Art Maker Project
 
-Udacity-Google Challenge´s final project
+Udacity FEND Pixel Art Project exercise.
