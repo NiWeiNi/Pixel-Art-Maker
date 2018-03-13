@@ -54,3 +54,7 @@ function makeGrid() {
     event.preventDefault();
     makeGrid();
  }));
+
+ // TODO
+ // Add a button random and a function to create a completly random painting
+ // everytime the random button is hit
