@@ -38,14 +38,13 @@ function makeGrid() {
     // Select cells table
     let cells = table.querySelectorAll('td');
 
-    // Store color
-    let color = document.querySelector('input[type="color"]').value;
-
     // Add EventListener on cells
     for (let i = 0; i < cells.length; i++) {
         cells[i].addEventListener('click', function() {
+             // Store color
+            let color = document.querySelector('input[type="color"]').value;
             // Set background color to color picked
-            cells.style.background = color;
+            cells[i].style.background = color;
         });
     }
 }
