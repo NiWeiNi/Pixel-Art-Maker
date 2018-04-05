@@ -22,48 +22,19 @@ function makeGrid() {
     document.querySelector('body').append(table);
 
     // Create rows of the table
-    for (let w = 0; w < width; w++) {
+    for (let w = 0; w < height; w++) {
         
         let tr = document.createElement('tr');
         table.appendChild(tr);
 
         // Create columns of the table
-        for (let c = 0; c < height; c++) {
+        for (let c = 0; c < width; c++) {
 
             let td = document.createElement('td');
             table.lastChild.append(td);
         }
     }
-
-    // Select cells table
-    let cells = table.querySelectorAll('td');
-
-    // Add EventListener on cells
-    for (let i = 0; i < cells.length; i++) {
-        cells[i].addEventListener('click', function() {
-             // Store color
-            let color = document.querySelector('input[type="color"]').value;
-            // Set background color to color picked
-            cells[i].style.background = color;
-        });
-    }
 }
-
-// When size is submitted by the user, call makeGrid()
- document.querySelector('input[type="submit"]').addEventListener('click', (function(event) {
-    event.preventDefault();
-    makeGrid();
- }));
-
- // TODO
- // Add a button random and a function to create a completly random painting
- // everytime the random button is hit
-
- // When size is submitted by the user, call makeGrid()
- document.querySelector('#random').addEventListener('click', (function(event) {
-    event.preventDefault();
-    randomFilling();
- }));
 
 // Fill the cells with random colors
 function randomFilling() {
@@ -87,13 +58,13 @@ function randomFilling() {
     document.querySelector('body').append(table);
 
     // Create rows of the table
-    for (let w = 0; w < width; w++) {
+    for (let w = 0; w < height; w++) {
         
         let tr = document.createElement('tr');
         table.appendChild(tr);
 
         // Create columns of the table
-        for (let c = 0; c < height; c++) {
+        for (let c = 0; c < width; c++) {
 
             let td = document.createElement('td');
             table.lastChild.append(td);
@@ -102,7 +73,7 @@ function randomFilling() {
 
     // Select cells table
     let cells = table.querySelectorAll('td');
-    
+
     for (let i = 0; i < cells.length; i++) {
         // Create a random color
         function randomNumber() {
@@ -115,3 +86,32 @@ function randomFilling() {
         cells[i].style.background = randomColor;
         }
 }
+
+// Add event listener on table
+function tableEventListener(){
+    let cells = document.querySelector("#pixelCanvas").querySelectorAll('td');
+
+    // Add EventListener on cells
+    for (let i = 0; i < cells.length; i++) {
+        cells[i].addEventListener('click', function() {
+             // Store color
+            let color = document.querySelector('input[type="color"]').value;
+            // Set background color to color picked
+            cells[i].style.background = color;
+        });
+    }
+}
+
+// When size is submitted by the user, call makeGrid()
+ document.querySelector('input[type="submit"]').addEventListener('click', (function(event) {
+    event.preventDefault();
+    makeGrid();
+    tableEventListener();
+ }));
+
+ // When size is submitted by the user, call randomFilling()
+ document.querySelector('#random').addEventListener('click', (function(event) {
+    event.preventDefault();
+    randomFilling();
+    tableEventListener();
+ }));
