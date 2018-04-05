@@ -80,6 +80,19 @@ function randomFilling() {
  document.querySelector('#random').addEventListener('click', (function(event) {
     event.preventDefault();
     makeGrid();
+    removeBorders();
     randomFilling();
     tableEventListener();
  }));
+
+// Remove borders of tr and td elements
+function removeBorders() {
+    let tds = document.querySelectorAll('td');
+    let trs = document.querySelectorAll('tr');
+    for(var i = 0; i < tds.length; i++) {
+        tds[i].style.border='none';
+     }
+     for(var i = 0; i < trs.length; i++) {
+        trs[i].style.border='none';
+     }
+}
